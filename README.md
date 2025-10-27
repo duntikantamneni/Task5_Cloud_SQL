@@ -1,0 +1,77 @@
+Objective
+The objective of this task is to understand how Cloud Databases work by creating a managed SQL database instance (MySQL) in the cloud, connecting to it, and performing basic CRUD operations.
+This helps in learning Database-as-a-Service (DBaaS) concepts and how to work with cloud-managed databases securely.
+
+Tools & Platform Used: 
+Platform: Google Cloud Platform (GCP)
+Service: Cloud SQL (MySQL 8.0)
+Access Method: Cloud Shell Terminal
+SQL Client: MySQL CLI (via Cloud Shell)
+Region: Asia-South (Mumbai)
+
+🪜 Steps Followed
+1️⃣ Create a Cloud SQL Instance
+Opened Google Cloud Console → SQL → Create Instance.
+Selected MySQL as the database engine.
+Gave the instance name: task5-sql-demo.
+
+Configured:
+Region: Asia-South (Mumbai)
+Tier: db-f1-micro (Free tier)
+Root user password: (set during creation)
+Clicked Create Instance and waited for provisioning to complete.
+
+2️⃣ Configure Access
+Enabled public IP access for easy testing.
+Added authorized networks for secure connection (automatically managed by Cloud Shell).
+Verified instance status as RUNNABLE.
+
+3️⃣ Connect to Database Using Cloud Shell
+Opened Cloud Shell from the top-right console icon and ran: gcloud sql connect task5-sql-demo --user=root
+Entered password when prompted (input is invisible — normal behavior). Successfully connected to the MySQL monitor.
+
+4️⃣ Create a Database and Table:
+Executed the following SQL commands:
+CREATE DATABASE intern_demo;
+USE intern_demo;
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  domain VARCHAR(30),
+  score INT
+);
+✅ Database and table created successfully.
+
+5️⃣ Insert and View Data
+INSERT INTO students (name, domain, score)
+VALUES 
+('Aarav', 'Cloud', 95),
+('Diya', 'DevOps', 89),
+('Varun', 'Data', 92);
+SELECT * FROM students;
+
+
+Output:
+id	name	domain	score
+1	Aarav	     Cloud	95
+2	Diya	    DevOps	89
+3	Varun	      Data	92
+
+6️⃣ Disconnect and Cleanup exit;
+Stopped instance to avoid unnecessary billing.
+
+🧠 Learnings / Outcomes
+Understood how Cloud SQL provides a managed MySQL environment.
+Learned how to connect securely using Cloud Shell without local setup.
+Practiced SQL commands in a cloud-hosted database.
+Gained clarity on database provisioning, connectivity, and CRUD operations in the cloud.
+
+📷 Deliverables Included
+Screenshot of Cloud SQL instance (running)
+Screenshot of successful MySQL connection
+Screenshot of table creation and data insertion
+This report file (Task5_Report_Varun.txt)
+
+✅ Conclusion
+This task demonstrated how cloud databases simplify management and scaling.
+Using Google Cloud SQL, I successfully created, connected, and operated on a MySQL database instance entirely in the cloud environment.
